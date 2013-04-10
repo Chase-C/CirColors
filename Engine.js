@@ -111,6 +111,9 @@ Engine.prototype =
         p1.setVel(unitNormal.copy().scale(newNormVel1).add(
                     unitTangent.copy().scale(velTan1)));
         p2.setVel(unitNormal.scale(newNormVel2).add(unitTangent.scale(velTan2)));
+
+        // Play a sound
+        Sound.instSound((700000 / (p1.getMass() + p2.getMass())) + 110);
     },
 
     // Gets the normal vector between two particles
@@ -125,6 +128,11 @@ Engine.prototype =
         if(evt.button == 0) {
             this.lmouseButton = true;
             // If the left mouse button was pressed
+            if(this.particles.length > 0) {
+                var particle = this.particles.pop();
+                particle.release(particle.velocityVector());
+                this.particles.push(particle);
+            }
             engine.addParticle(evt.pageX, evt.pageY);
         } else if(evt.button == 1) {
             this.rmouseButton = true;
