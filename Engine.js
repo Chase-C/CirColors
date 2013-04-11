@@ -113,7 +113,7 @@ Engine.prototype =
         p2.setVel(unitNormal.scale(newNormVel2).add(unitTangent.scale(velTan2)));
 
         // Play a sound
-        Sound.instSound((700000 / (p1.getMass() + p2.getMass())) + 110);
+        Sound.instSound((750000 / massSum) + 100);
     },
 
     // Gets the normal vector between two particles
