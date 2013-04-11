@@ -113,7 +113,13 @@ Engine.prototype =
         p2.setVel(unitNormal.scale(newNormVel2).add(unitTangent.scale(velTan2)));
 
         // Play a sound
-        Sound.instSound((750000 / massSum) + 100);
+        var frq = (750000 / massSum) + 100;
+        frq = frq.toString();
+        Sound.instSound(frq);
+
+        // Initiate particle effect
+        p1.switchColor(p2.color);
+        p2.switchColor(p1.color);
     },
 
     // Gets the normal vector between two particles

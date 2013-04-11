@@ -15,6 +15,7 @@ var Particle = function(x, y)
 
     // Color
     this.color = (new Color(0, 0, 0)).Red();
+    this.tempColor = null;
     this.percent = 0;
 
     // Does it get updated?
@@ -56,6 +57,8 @@ Particle.prototype =
         if(this.activate) {
             this.x += this.vx;
             this.y += this.vy;
+            if(this.percent < 100)
+                this.percent += 1;
         }
     },
 
@@ -63,6 +66,7 @@ Particle.prototype =
     {
         this.setVel(vel);
         this.m = this.r * this.r * Math.PI;
+        this.percent = 100;
 
         this.activate = true;
     },
@@ -87,7 +91,7 @@ Particle.prototype =
                         this.color.Blue(), (100 / 110) * (this.percent - 290));
             }
 
-            var stepSize = (50 - 8) / .25;
+            var stepSize = (50 - 8) * 4; // or / .25;
             this.percent += 400 / stepSize;
         }
     },
@@ -97,12 +101,31 @@ Particle.prototype =
         return this.m;
     },
 
+    // Start the particle effect
+    switchColor: function(color)
+    {
+        this.tempColor = color;
+        this.percent = 20;
+    },
+
     // Draw the particle
     draw: function(canvas)
     {
+        var radius = this.r;
+
+        if(this.activate && this.percent < 100) {
+            canvas.fillStyle = this.tempColor.toString();
+            canvas.beginPath();
+            canvas.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+            canvas.closePath();
+            canvas.fill();
+
+            radius = radius * (this.percent / 100);
+        }
+
         canvas.fillStyle = this.color.toString();
         canvas.beginPath();
-        canvas.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+        canvas.arc(this.x, this.y, radius, 0, Math.PI * 2, true);
         canvas.closePath();
         canvas.fill();
     }

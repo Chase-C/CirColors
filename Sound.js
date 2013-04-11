@@ -5,7 +5,6 @@ var Sound =
 {
     sineFunc: function(si, len, frq, chn, opt)
     {
-        // var fad = Math.min(1, (opt.sustain || 1) * (len - si) / len);
         var fad = (len - si) / len;
         // The sine function that produces the sound
         return Math.floor(fad * 128 * 256 * (
@@ -19,8 +18,6 @@ var Sound =
         }
 
         // Play the sound
-        var fString = frq.toString();
-        Th.Inst.get("InstSound").getSound(fString).play();
-        alert(fString);
+        Th.Inst.get("InstSound").getSound(frq).play();
     }
 };
