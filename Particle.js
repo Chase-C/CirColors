@@ -84,22 +84,25 @@ Particle.prototype =
         if(this.r < 50) {
             this.r += 0.25;
 
-            if(this.percent <= 150) {
+            if(this.percent <= 90) {
                 this.color = this.color.Red().mix(
-                        this.color.Yellow(), (100 / 150) * this.percent);
-            } else if(this.percent <= 220) {
+                        this.color.Pink(), (100 / 90) * this.percent);
+            } else if(this.percent <= 170) {
+                this.color = this.color.Pink().mix(
+                        this.color.Yellow(), (100 / 80) * (this.percent - 100));
+            } else if(this.percent <= 310) {
                 this.color = this.color.Yellow().mix(
-                        this.color.Green(), (100 / 70) * (this.percent - 150));
-            } else if(this.percent <= 290) {
+                        this.color.Green(), (100 / 140) * (this.percent - 170));
+            } else if(this.percent <= 410) {
                 this.color = this.color.Green().mix(
-                        this.color.Cyan(), (100 / 70) * (this.percent - 220));
-            } else if(this.percent <= 400) {
+                        this.color.Cyan(), (100 / 100) * (this.percent - 310));
+            } else if(this.percent <= 500) {
                 this.color = this.color.Cyan().mix(
-                        this.color.Blue(), (100 / 110) * (this.percent - 290));
+                        this.color.Blue(), (100 / 90) * (this.percent - 410));
             }
 
             var stepSize = (50 - 8) * 4; // or / .25;
-            this.percent += 400 / stepSize;
+            this.percent += 500 / stepSize;
         }
     },
 

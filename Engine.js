@@ -44,7 +44,7 @@ Engine.prototype =
 
         // Decrease the alpha value
         if(this.alpha > 0) {
-            this.alpha *= 0.8;
+            this.alpha *= 0.7;
             if(this.alpha < 0.01)
                 this.alpha = 0;
         }
@@ -249,7 +249,7 @@ Engine.prototype =
         this.leftColor = (p1.getX() > p2.getX() ? p2.getColor() : p1.getColor());
         this.rightColor = (p1.getX() > p2.getX() ? p1.getColor() : p2.getColor());
         // Set the alpha value
-        this.alpha = 0.65;
+        this.alpha = 0.75;
     },
 
     // Figure out which points go where

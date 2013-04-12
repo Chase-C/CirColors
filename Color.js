@@ -37,6 +37,11 @@ Color.prototype =
         return new Color(224, 32, 32);
     },
 
+    Pink: function()
+    {
+        return new Color(231, 50, 120);
+    },
+
     Yellow: function()
     {
         return new Color(224, 224, 0);
@@ -54,7 +59,7 @@ Color.prototype =
 
     Blue: function()
     {
-        return new Color(32, 32, 224);
+        return new Color(0, 64, 224);
     },
 
     // Check if this color matches the given rgb values
