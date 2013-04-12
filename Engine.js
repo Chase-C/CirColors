@@ -5,7 +5,6 @@ var Engine = function(w, h)
 
     this.particles = [];
 
-
     this.points1 = [];
     this.points2 = [];
     this.leftColor = new Color(255, 255, 255);
@@ -13,6 +12,7 @@ var Engine = function(w, h)
     this.alpha = 0;
 
     this.running = true;
+    this.bgEffect = true;
     this.sound = true;
 
     this.lmouseButton = false;
@@ -144,7 +144,8 @@ Engine.prototype =
         p2.switchColor(p1.color);
 
         // Initiate the background effect
-        this.splitColor(p1, p2, unitTangent);
+        if(this.bgEffect == true)
+            this.splitColor(p1, p2, unitTangent);
     },
 
     // Gets the normal vector between two particles
@@ -203,6 +204,12 @@ Engine.prototype =
         this.sound = !this.sound;
     },
 
+    // Toggle the background effect
+    toggleBgEffect: function()
+    {
+        this.bgEffect = !this.bgEffect;
+    },
+
     // Split the screen along the tangent between two colliding particles
     // The colors of two parts of the screen depend on the colors of the particles
     splitColor: function(p1, p2, tangent)
@@ -246,10 +253,10 @@ Engine.prototype =
         // Push the points to the points1[] and points2[] variables
         this.pushPoints(point1, point2);
         // Set the correct colors
-        this.leftColor = (p1.getX() > p2.getX() ? p2.getColor() : p1.getColor());
-        this.rightColor = (p1.getX() > p2.getX() ? p1.getColor() : p2.getColor());
+        this.leftColor = (p1.getX() < p2.getX() ? p2.getColor() : p1.getColor());
+        this.rightColor = (p1.getX() < p2.getX() ? p1.getColor() : p2.getColor());
         // Set the alpha value
-        this.alpha = 0.75;
+        this.alpha = 0.85;
     },
 
     // Figure out which points go where

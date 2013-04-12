@@ -20,6 +20,9 @@ document.addEventListener('keydown', function(event) {
                 Run();
             }
             break;
+        case 69:
+            engine.toggleBgEffect();
+            break;
         case 82:
             engine.reset();
             break;
