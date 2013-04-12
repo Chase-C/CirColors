@@ -39,6 +39,13 @@ Particle.prototype =
     getVelY: function() { return this.vy },
     setVelY: function(vy) { this.vy = vy },
 
+    getColor: function()
+    {
+        var color = new Color(0, 0, 0);
+        color = color.add(this.color);
+        return color;
+    },
+
     // Vector getter and setter methods
     velocityVector: function()
     {
@@ -104,8 +111,10 @@ Particle.prototype =
     // Start the particle effect
     switchColor: function(color)
     {
-        this.tempColor = color;
-        this.percent = 20;
+        if(this.activate) {
+            this.tempColor = color;
+            this.percent = 20;
+        }
     },
 
     // Draw the particle

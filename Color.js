@@ -57,6 +57,12 @@ Color.prototype =
         return new Color(32, 32, 224);
     },
 
+    // Check if this color matches the given rgb values
+    matchRGB: function(r, g, b)
+    {
+        return ((this.r == r) && (this.g == g) && (this.b == b));
+    },
+
     // Add two colors together, rgb values can't exceed 255
     add: function(color)
     {
@@ -69,12 +75,25 @@ Color.prototype =
         return this;
     },
 
+    // Add given rgb values to this color
+    addRGB: function(r, g, b)
+    {
+        this.r += r;
+        this.g += g;
+        this.b += b;
+
+        this.clip();
+
+        return this;
+    },
+
     // Scale color as a percentage
     scale: function(p)
     {
-        this.r *= p / 100;
-        this.g *= p / 100;
-        this.b *= p / 100;
+        var frac = p / 100;
+        this.r *= frac;
+        this.g *= frac;
+        this.b *= frac;
 
         this.clip();
     },
