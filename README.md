@@ -1,4 +1,4 @@
-Sound-of-Circles
+Circolors
 ================
 
 A simple circle-circle collision simulator with a twist. Written in javascript.
