@@ -1,4 +1,4 @@
-Circolors
+CirColors
 ================
 
 A simple circle-circle collision simulator with a twist. Written in javascript.
