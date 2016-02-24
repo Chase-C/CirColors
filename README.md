@@ -1,6 +1,8 @@
 Circolors
 ================
 
+[You can run it in your browser right here!](http://Chase-C.github.io/Circolors)
+
 A simple circle-circle collision simulator with a twist. Written in javascript.
 
 I've only tested it in Firefox and Chrome, so I don't know if it will work
